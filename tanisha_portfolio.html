@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanisha Gautam - Portfolio</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #378ADD;
+  --primary-dark: #185FA5;
+  --accent: #7F77DD;
+  --text-dark: #2C2C2A;
+  --text-light: #5F5E5A;
+  --bg-light: #F1EFE8;
+  --bg-white: #FFFFFF;
+  --border-color: #D3D1C7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #85B7EB;
+    --primary-dark: #5A8FDD;
+    --accent: #AFA9EC;
+    --text-dark: #E6E6E6;
+    --text-light: #B0AFAA;
+    --bg-light: #2C2C2A;
+    --bg-white: #3A3A38;
+    --border-color: #4A4A48;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+nav .name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+nav .links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.hero {
+  background: var(--bg-white);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.hero .title {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.hero .cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+}
+
+section {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.experience-item {
+  background: var(--bg-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.experience-item h3 {
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.experience-item .company {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-item ul {
+  list-style: none;
+  margin-top: 0.75rem;
+}
+
+.experience-item li {
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.experience-item li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.project-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.project-card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background: rgba(55, 138, 221, 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category {
+  background: var(--bg-white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.skill-category h3 {
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.skill-category p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.contact {
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.contact-link:hover {
+  color: var(--primary-dark);
+}
+
+footer {
+  background: var(--bg-white);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  nav .links {
+    gap: 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  section {
+    padding: 2rem 1rem;
+  }
+  
+  .hero .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="name">Tanisha Gautam</div>
+  <ul class="links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero" id="about">
+  <h1>Tanisha Gautam</h1>
+  <div class="title">ML Engineer & Full-Stack Developer</div>
+  <p class="subtitle">
+    NSUT Computer Science student exploring autonomous UAV navigation, 3D path planning, and intelligent systems. Passionate about building efficient algorithms and scalable solutions.
+  </p>
+  <div class="cta-buttons">
+    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+    <a href="/resume_off.pdf" class="btn btn-secondary">Download Resume</a>
+  </div>
+</div>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="experience-item">
+    <h3>ML Intern - Defence Research & Development Organisation (DRDO)</h3>
+    <div class="company">ISSA | May – July 2026</div>
+    <ul>
+      <li>Developed voxel-based 3D terrain representation using real-world OBJ datasets for autonomous UAV navigation</li>
+      <li>Implemented A* path planning algorithm achieving collision-free optimal routing across complex 3D terrain</li>
+      <li>Optimized voxel grid resolution for balance between accuracy, memory, and computational efficiency</li>
+      <li>Evaluated RL and Neural Network approaches for intelligent obstacle avoidance</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Fault Detection in Industrial Machinery</h3>
+      <p>Predictive maintenance using NASA C-MAPSS turbofan engine database with advanced deep learning architectures.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">LSTM</span>
+        <span class="tech-tag">Transformer</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">FastAPI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>TrackDelivery</h3>
+      <p>Real-time location tracking web application with live updates, dynamic distance calculation, and ETA prediction.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">MERN</span>
+        <span class="tech-tag">Socket.io</span>
+        <span class="tech-tag">React-Leaflet</span>
+        <span class="tech-tag">WebSockets</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Mini OS Utility Suite</h3>
+      <p>Python-based system utility with interactive CLI shell, file management, compression, and task scheduling.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Multithreading</span>
+        <span class="tech-tag">OOPs</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>House Price Prediction</h3>
+      <p>ML regression model for Bengaluru property valuation with Flask backend and Bootstrap responsive frontend.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">Machine Learning</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">Scikit-learn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  
+  <div class="skills-grid">
+    <div class="skill-category">
+      <h3>Languages</h3>
+      <p>Python, JavaScript, C++, Java, HTML/CSS</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Web Frameworks</h3>
+      <p>React, Angular, Node.js, Express, Flask, Tailwind CSS</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>ML & Data</h3>
+      <p>TensorFlow, PyTorch, Keras, Pandas, NumPy, Scikit-learn</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Specialized</h3>
+      <p>3D Voxel Representation, Pathfinding (A*), Deep Learning, Docker, CI/CD</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Visualization</h3>
+      <p>Matplotlib, Plotly, PyVista, Trimesh</p>
+    </div>
+
+    <div class="skill-category">
+      <h3>Systems</h3>
+      <p>WebSockets, Real-time Communication, OOPs, Multithreading</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get In Touch</h2>
+  
+  <div class="contact">
+    <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.05rem;">
+      I'm interested in opportunities in autonomous systems, ML engineering, and full-stack development. Let me know if you'd like to connect!
+    </p>
+    
+    <a href="mailto:tanisha.gautam.ug24@nsut.ac.in" class="contact-link">
+      ✉ Email
+    </a>
+    
+    <a href="tel:+919871055587" class="contact-link">
+      ☎ Phone
+    </a>
+    
+    <a href="#" class="contact-link">
+      🔗 LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Tanisha Gautam. Built with focus on clean design and technical excellence.</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href !== '#' && document.querySelector(href)) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
